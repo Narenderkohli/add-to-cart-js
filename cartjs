@@ -1,4 +1,11 @@
+<button type="submit" id="ButtonAddToCart" name="products[0395][product_id]" value="{{ card_product.variants[0].id }}">Add To Cart</button>
+
+==================
+js
+====================
 $(document).on("click","#ButtonAddToCart" ,function(){
+var button = $(this)
+
 var get_id_this = $(this).attr('value');
 console.log(get_id_this);
 $.ajax({
@@ -10,7 +17,8 @@ id: get_id_this
 },
 dataType: 'json',
 success: function() {
-   console.log("Added product to cart");  
+setTimeout(function(){
+    button.text('Added!');
+}, 2000);
 }
-});
 });
